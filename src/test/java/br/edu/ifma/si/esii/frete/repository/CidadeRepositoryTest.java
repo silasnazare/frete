@@ -9,6 +9,7 @@ import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,11 +23,11 @@ class CidadeRepositoryTest {
 
     @BeforeEach
     void setUp() {
-        Cidade cidade = new Cidade("São Luís", "MA", 1535.60);
+        Cidade cidade = new Cidade("São Luís", "MA", new BigDecimal(1535.60));
         cidadeRepository.save(cidade);
-        cidade = new Cidade("Belém", "PA", 1437.98);
+        cidade = new Cidade("Belém", "PA", new BigDecimal(1437.98));
         cidadeRepository.save(cidade);
-        cidade = new Cidade("Teresina", "PI", 2095.81);
+        cidade = new Cidade("Teresina", "PI", new BigDecimal(2095.81));
         cidadeRepository.save(cidade);
     }
 

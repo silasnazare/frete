@@ -9,5 +9,4 @@ class FreteApplicationTests {
     @Test
     void contextLoads() {
     }
-
 }

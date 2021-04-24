@@ -16,7 +16,7 @@ public class Cliente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull(message = "O nome do cliente é obrigatório!")
+    @NotNull(message = "O nome do Cliente é obrigatório!")
     @Length(min = 3, max = 50)
     private String nome;
     @Length(max = 100)

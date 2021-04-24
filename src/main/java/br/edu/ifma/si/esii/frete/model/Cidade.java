@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Entity
 public class Cidade implements Serializable {
@@ -16,19 +17,19 @@ public class Cidade implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull(message = "O nome da cidade é obrigatório!")
+    @NotNull(message = "O nome da Cidade é obrigatório!")
     @Length(min = 3, max = 25)
     private String nome;
     @NotNull(message = "A sigla do estado é obrigatória!")
     @Length(min = 2, max = 2)
     private String uf;
     @Positive
-    private double taxa;
+    private BigDecimal taxa;
 
     public Cidade() {
     }
 
-    public Cidade(String nome, String uf, double taxa) {
+    public Cidade(String nome, String uf, BigDecimal taxa) {
         this.nome = nome;
         this.uf = uf;
         this.taxa = taxa;
@@ -58,11 +59,11 @@ public class Cidade implements Serializable {
         this.uf = uf;
     }
 
-    public double getTaxa() {
+    public BigDecimal getTaxa() {
         return taxa;
     }
 
-    public void setTaxa(double taxa) {
+    public void setTaxa(BigDecimal taxa) {
         this.taxa = taxa;
     }
 

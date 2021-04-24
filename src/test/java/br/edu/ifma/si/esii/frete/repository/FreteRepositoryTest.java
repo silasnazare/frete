@@ -10,11 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.data.domain.Sort;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,13 +28,13 @@ class FreteRepositoryTest {
 
     @BeforeEach
     void setUp() {
-        Cidade cidade = new Cidade("São Luís", "MA", 1535.60);
+        Cidade cidade = new Cidade("São Luís", "MA", new BigDecimal(1535.60));
         cidadeRepository.save(cidade);
         Cliente cliente = new Cliente("Silas Nazare", "Calhau", "98981");
         clienteRepository.save(cliente);
-        Frete frete = new Frete(cidade, cliente, "notebooks", 2534.98, BigDecimal.valueOf(25934.87));
+        Frete frete = new Frete(cidade, cliente, "notebooks", 2534.98, new BigDecimal(25934.87));
         freteRepository.save(frete);
-        frete = new Frete(cidade, cliente, "celulares", 1744.98, BigDecimal.valueOf(16976.87));
+        frete = new Frete(cidade, cliente, "celulares", 1744.98, new BigDecimal(16976.87));
         freteRepository.save(frete);
     }
 

@@ -8,6 +8,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Optional;
 
 @Service
@@ -40,5 +42,11 @@ public class FreteService {
     @Transactional
     public void removeTudo() {
         freteRepository.deleteAll();
+    }
+
+    public BigDecimal calculaValorDoFrete(Frete frete) {
+        BigDecimal taxa = frete.getCidade().getTaxa();
+        frete.setValor(new BigDecimal(frete.getPeso() * 10).add(taxa).setScale(1, RoundingMode.UP));
+        return frete.getValor();
     }
 }
